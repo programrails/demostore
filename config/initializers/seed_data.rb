@@ -11,7 +11,7 @@ module SeedData
 
 	def seed_data
 
-		return if Rails.env.production?
+		(return if Rails.env.production?) if ENV['DYNO'].blank? # check Heroku
 
 		unless Rails.env.test?
 
