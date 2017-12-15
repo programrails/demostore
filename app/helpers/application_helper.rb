@@ -52,7 +52,7 @@ module ApplicationHelper
 
       begin
 
-        stored_image = asset_path(instance_obj.try(:title).try(:downcase))
+        stored_image = asset_path(instance_obj.try(:title).try(:downcase).try(:+, ".jpg"))
 
       rescue Sprockets::Rails::Helper::AssetNotFound 
 
