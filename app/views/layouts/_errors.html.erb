@@ -1,0 +1,18 @@
+<% unless flash[:notice].blank? %>
+  <p id="notice" class="notice"><%= notice %></p>
+<% end %>
+<% unless flash[:alert].blank? %>
+  <p class="alert"><%= alert %></p>
+<% end %>
+
+<% if defined?(obj) && obj && obj.errors.any? %>
+  <div id="error_explanation" class="notice">
+    <h2><%= pluralize(obj.errors.count, "error") %> prohibited this from being saved:</h2>
+
+    <ul>
+    <% obj.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

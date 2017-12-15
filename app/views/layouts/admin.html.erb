@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Depot2 Admin section</title>
+  <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">            
+            <%= link_to 'Back to the customer area', products_path, class: "nav-link navbar-brand" %>
+          </li>    
+        </ul>
+
+        <div class="form-inline mt-2 mt-md-0">
+
+          <ul class="navbar-nav mr-auto">       
+
+            <li class="nav-item">              
+              <%= link_to 'Sign out', destroy_user_session_path, :method => :delete, class: "nav-link" %>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+
+    </nav>
+  </header>
+
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+        <ul class="nav nav-pills flex-column">
+
+            <li class="nav-item">
+              <%= link_to 'Products', admin_products_path, class: "nav-link #{controller_name == 'products' ? 'active' : ''}" %>
+            </li>
+
+            <li class="nav-item">
+              <%= link_to 'Categories', admin_categories_path, class: "nav-link #{controller_name == 'categories' ? 'active' : ''}" %>
+            </li>
+
+            <li class="nav-item">
+              <%= link_to 'Carts', admin_carts_path, class: "nav-link #{controller_name == 'carts' ? 'active' : ''}" %>
+            </li>
+
+            <li class="nav-item">
+              <%= link_to 'Orders', admin_orders_path, class: "nav-link #{controller_name == 'orders' ? 'active' : ''}" %>
+            </li>
+
+            <li class="nav-item">
+              <%= link_to 'LineItems', admin_line_items_path, class: "nav-link #{controller_name == 'line_items' ? 'active' : ''}" %>
+            </li>
+
+            <li class="nav-item">
+              <%= link_to 'Users', admin_users_path, class: "nav-link #{controller_name == 'users' ? 'active' : ''}" %>
+            </li>            
+
+        </ul>
+      </nav>
+
+      <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
+
+        <% unless flash[:notice].blank? %>
+          <p id="notice" class="notice"><%= notice %></p>
+        <% end %>
+        <% unless flash[:alert].blank? %>
+          <p class="alert"><%= alert %></p>
+        <% end %>
+        
+        <%= yield %>
+
+      </main>
+    </div>
+  </div>    
+
+</body>
+</html>
+
+<%#= console %>

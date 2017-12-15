@@ -1,0 +1,37 @@
+<h2>Products</h2>
+
+<div class="table-responsive">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Category</th>
+      <th>Price</th>
+      <th>Salescount</th>
+      <th>Picture</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.title %></td>
+        <td><%= product.description %></td>
+        <td><%= product.try(:category).try(:title) %></td>
+        <td><%= product.price %></td>
+        <td><%= product.salescount %></td>
+        <td><img src="<%= single_attachment_url_280(product) %>" style="width:40px;"></td>
+        <td><%= link_to 'Show', [:admin, product] %></td>
+        <td><%= link_to 'Edit', edit_admin_product_path(product) %></td>
+        <td><%= link_to 'Destroy', [:admin, product], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<br>
+
+<%= link_to 'New Product', new_admin_product_path %>

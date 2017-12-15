@@ -1,0 +1,12 @@
+<p>
+  <strong>User:</strong>
+  <%= @order.user.email %>
+</p>
+
+<p>
+  <strong>Pay type:</strong>
+  <%= @order.pay_type %>
+</p>
+
+<%= link_to 'Edit', edit_admin_order_path(@order) %> |
+<%= link_to 'Back', admin_orders_path %>

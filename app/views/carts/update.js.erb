@@ -1,0 +1,9 @@
+$('#errors').html("<%= escape_javascript render partial: "layouts/errors", locals: {obj: @cart} %>");
+
+$('#cart').html("<%= escape_javascript render :partial => "layouts/cart" %>");
+
+<% if params[:clear_line_items] %>
+
+	$('#main').html("<%= escape_javascript render :partial => "p_show" %>");
+
+<% end %>

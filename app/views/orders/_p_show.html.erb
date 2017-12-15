@@ -1,0 +1,51 @@
+<h1>Your order</h1>
+
+<p>
+  <strong>User:</strong>
+  <%= @order.user.email %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @order.user.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @order.user.address %>
+</p>
+
+<p>
+  <strong>Pay type:</strong>
+  <%= @order.pay_type %>
+</p>
+
+<div class="table-responsive">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @order.line_items.each do |line_item| %>
+      <tr>
+      	<td><img src="<%= single_attachment_url_280(line_item.product) %>" style="width:140px;"></td>
+        <td><%= line_item.product.try(:title) %></td>
+        <td><%= number_to_currency line_item.product.try(:price) %></td>
+        <td><%= line_item.quantity %></td>        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<div class="field">
+  Total:
+  <%= number_to_currency @order.total %>
+</div>

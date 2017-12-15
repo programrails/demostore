@@ -1,0 +1,29 @@
+<h2>Carts</h2>
+
+<div class="table-responsive">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @carts.each do |cart| %>
+      <tr>
+        <td><%= cart.try(:user).try(:email) %></td>
+        <td><%= link_to 'Show', [:admin, cart] %></td>
+        <td><%= link_to 'Edit', edit_admin_cart_path(cart) %></td>
+        <td><%= link_to 'Destroy', [:admin, cart], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<br>
+
+<%= link_to 'New Cart', new_admin_cart_path %>

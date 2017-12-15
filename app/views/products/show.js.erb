@@ -1,0 +1,5 @@
+$('#errors').html("<%= escape_javascript render partial: "layouts/errors", locals: {obj: @product} %>");
+
+$('#main').html("<%= escape_javascript render :partial => "p_show" %>");
+
+$('#products_menu').html("<%= escape_javascript render :partial => "layouts/products_menu" %>");

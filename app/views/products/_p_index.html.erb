@@ -1,0 +1,39 @@
+<h2>Products</h2>
+
+<div class="margin-bottom20"></div>
+
+<% @products.each_slice(3).to_a.each do |row| %>
+
+  <div class="row">
+
+    <% row.each do |product| %>
+
+      <div class="col-sm-4">
+        
+          <div class="tile">
+            <div class="tile-container">
+              <a href="<%= product_path(product) %>" class="tile-href tile-image-blend" data-remote="false">
+              <div class="tile-280" style="<%= "background-image: url('#{single_attachment_url_280(product)}')" %>">
+              </div>
+              </a>
+              <h4 class="tile-text"><%= product.title %></h4>
+              <h4 class="tile-text"><%= number_to_currency product.price %></h4>
+
+              <%= form_tag cart_path(@cart), method: :patch, remote: true do |f| %>
+                <span><%= label_tag 'Quantity: ' %></span>
+                <span class="number"><%= number_field_tag :add_product_quantity %></span>
+                <%= hidden_field_tag :add_product_id, product.id %>
+                <%= hidden_field_tag :"cart[id]", @cart.id %>
+                <div><%= submit_tag 'Add to Cart' %></div>
+              <% end %>
+
+            </div>
+          </div>
+        
+      </div>
+
+    <% end %>
+
+  </div>
+
+<% end %>

@@ -1,0 +1,33 @@
+<p>
+  <strong>Title:</strong>
+  <%= @product.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @product.description %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @product.try(:category).try(:title) %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @product.price %>
+</p>
+
+<p>
+  <strong>Salescount:</strong>
+  <%= @product.salescount %>
+</p>
+
+<% if heroku? %>
+  <div class="tile-280" style="<%= "background-image: url('#{single_attachment_url_280(@product)}')" %>"></div>
+<% else %>
+  <%= render 'layouts/uploaded_file', param: @product %>
+<% end %>
+
+<%= link_to 'Edit', edit_admin_product_path(@product) %> |
+<%= link_to 'Back', admin_products_path %>

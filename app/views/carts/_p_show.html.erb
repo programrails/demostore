@@ -1,0 +1,48 @@
+<h2>Your cart</h2>
+
+<div class="table-responsive">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cart.line_items.each do |line_item| %>
+      <tr>
+        <td><img src="<%= single_attachment_url_280(line_item.product) %>" style="width:140px;"></td>
+        <td><%= line_item.product.try(:title) %></td>
+        <td><%= number_to_currency line_item.product.try(:price) %></td>
+        <td>
+          <%= form_for line_item, remote: true, method: :patch do |f| %>  
+          <%= f.number_field :quantity %>    
+          <%= f.submit 'Update' %>
+          <% end %>
+        </td>        
+        <td><%= button_to 'X', line_item, remote: true, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<% unless @cart.line_items.empty? %>
+
+  <div class="field">
+    Total:
+    <%= number_to_currency @cart.total %>
+  </div>
+
+  <br>
+
+  <%= button_to "Checkout", new_order_path, remote: false, method: :get, form_class: "inline-block" %>&nbsp;
+  <%# http://stackoverflow.com/questions/4886963/how-to-add-additional-params-to-a-button-to-form  %>
+  <%= button_to 'Empty cart', cart_path, remote: true, method: :patch,
+      data: { confirm: 'Are you sure?' }, form_class: "inline-block",
+      params: { "cart[id]" => @cart.id, "clear_line_items" => true } %>
+<% end %>

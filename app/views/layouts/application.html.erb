@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Depot2</title>
+  <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link navbar-brand" href="<%= description_path %>">Description</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link navbar-brand" href="<%= reference_path %>">Reference</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link navbar-brand" href="#">On GitHub</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link navbar-brand" href="<%= reset_path %>">Reset</a>
+          </li>            
+        </ul>
+
+        <div class="form-inline mt-2 mt-md-0">
+
+          <ul class="navbar-nav mr-auto">          
+
+            <% if user_signed_in? %>
+
+              <% if (current_user.has_role? :admin) %>
+                <li class="nav-item">                  
+                  <%= link_to 'Admin area', admin_products_path, class: "nav-link" %>
+                </li>
+              <% end %>
+
+              <li class="nav-item">
+                <div id="cart">
+                  <%= render :partial => "layouts/cart" %>
+                </div>
+              </li>
+
+              <li class="nav-item">
+                <%= link_to "Hello, #{current_user.email}", user_path(current_user), remote: false, class: "nav-link" %>
+              </li>
+              <li class="nav-item">              
+                <%= link_to 'Sign out', destroy_user_session_path, :method => :delete, class: "nav-link" %>
+              </li>
+
+            <% else %>
+
+              <li class="nav-item">
+                <div id="cart">
+                  <%= render :partial => "layouts/cart" %>
+                </div>
+              </li>            
+            
+              <li class="nav-item">
+                <%= link_to 'Sign in', new_user_session_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'Register', new_user_registration_path, class: "nav-link" %>
+              </li>
+
+            <% end %>
+
+          </ul>
+        </div>
+      </div>
+
+    </nav>
+  </header>
+
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+        
+        <div id="products_menu">
+          <%= render :partial => "layouts/products_menu" %>
+        </div>
+
+      </nav>
+
+      <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
+
+      <div id="errors">
+        <%= render :partial => "layouts/errors" %>
+      </div>
+        
+      <div id="main">
+        <%= yield %>
+      </div>
+
+      </main>
+    </div>
+  </div>    
+
+</body>
+</html>
+
+<%#= console %>

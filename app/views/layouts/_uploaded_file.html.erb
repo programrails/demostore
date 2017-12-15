@@ -1,0 +1,60 @@
+<% f = param %>
+
+<% if f.class.to_s == "ActionView::Helpers::FormBuilder" %>
+
+<% uploader_name = f.object.uploader_name %>
+
+  <% if f.object.respond_to? uploader_name %>
+
+    <div class="field">
+      <%= f.label uploader_name.to_s.capitalize + ":" %><br> 
+      <% if f.object.send(uploader_name).file %>
+
+        <% url = request.base_url.to_s + f.object.send(uploader_name).url %>
+        <%= image_tag url  %><br>
+
+          <%
+
+          file_delete_params = {}
+
+          file_delete_params[f.object.class.to_s.underscore.to_sym] = 
+            {
+              dummy_param: true
+            }
+
+            file_delete_params[:destroy_attachment] = true
+
+          %>        
+
+         <%= link_to "Удалить", helper_by_name2("admin_#{f.object.class.to_s.underscore}_path", f.object.id, file_delete_params), method: :patch, data: { confirm: 'Вы уверены?' } %>    
+    
+      <% end %>
+    </div>
+    
+    <div class="field">
+      <%= f.file_field uploader_name %>
+    </div><br>
+
+  <% end %>
+
+<% else %>
+
+  <% uploader_name = f.uploader_name %>
+
+  <% if f.respond_to? uploader_name %>
+
+    <strong><%= uploader_name.to_s.capitalize %>:</strong>
+    <p>
+      <% if f.send(uploader_name).file %>
+
+        <% url = request.base_url.to_s + f.send(uploader_name).url %>
+        <%= image_tag url  %><br><br>
+
+      <% end %>    
+    </p>
+
+  <% end %>
+
+<% end %>
+
+ <%# console %>

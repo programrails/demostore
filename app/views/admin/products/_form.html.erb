@@ -1,0 +1,53 @@
+<%= form_for([:admin, @product]) do |f| %>
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% @product.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+      <%= f.label :title %><br>
+    <%= f.text_field :title %>
+    </div>
+  <div class="field">
+      <%= f.label :description %><br>
+    <%= f.text_area :description %>
+    </div>
+
+   <div class="field">
+    <%= f.label "Категория" %><br>
+    <%= f.collection_select :category_id, Category.order(:title), :id, :title,
+  # http://guides.rubyonrails.org/form_helpers.html#select-boxes-for-dealing-with-models
+  # http://guides.rubyonrails.org/form_helpers.html#using-form-helpers
+                  :include_blank => "Ничего не выбрано" %>
+
+  </div>
+
+  <div class="field">
+      <%= f.label :price %><br>
+    <%= f.text_field :price %>
+    </div>
+  <div class="field">
+      <%= f.label :salescount %><br>
+    <%= f.number_field :salescount %>
+    </div>
+
+  <div class="field">
+    <% if heroku? %>
+    <div class="field rf">The user file upload is not supported on Heroku.</div>
+      <div class="tile-280" style="<%= "background-image: url('#{single_attachment_url_280(@product)}')" %>"></div>
+    <% else %>
+      <%= render 'layouts/uploaded_file', param: f %>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

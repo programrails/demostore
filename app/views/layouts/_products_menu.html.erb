@@ -1,0 +1,13 @@
+<ul class="nav nav-pills flex-column">
+
+<% @categories_menu.each do |category_menu_item| %>
+
+  <li class="nav-item">              
+    <%= link_to category_menu_item[:title], category_menu_item[:path], 
+
+    class: "nav-link" + category_menu_item[:active], remote: true %>                            
+  </li>
+
+ <% end %>
+
+</ul>

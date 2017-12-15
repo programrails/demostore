@@ -1,0 +1,22 @@
+<p>
+  <strong>Cart:</strong>
+  <%= @line_item.cart %>
+</p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @line_item.order %>
+</p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @line_item.product %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @line_item.quantity %>
+</p>
+
+<%= link_to 'Edit', edit_admin_line_item_path(@line_item) %> |
+<%= link_to 'Back', admin_line_items_path %>

@@ -1,0 +1,6 @@
+<h2 class="sub-header">Reset database initial data</h2>
+
+<p>Whatever data you might have deleted on this test site, you can restore it (to the initial state) by pressing the button below.</p>
+
+<%= button_to 'Reset database', regenerate_path, method: :delete,
+    data: { confirm: 'Are you sure?' } %>

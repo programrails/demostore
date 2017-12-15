@@ -1,0 +1,28 @@
+
+<div class="tile-280" style="<%= "background-image: url('#{single_attachment_url_280(@product)}')" %>">
+</div>
+
+<p>
+  <strong>Title:</strong>
+  <%= @product.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @product.description %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @product.try(:category).try(:title) %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= number_to_currency @product.price %>
+</p>
+
+<p>
+  <strong>Salescount:</strong>
+  <%= @product.salescount %>
+</p>
