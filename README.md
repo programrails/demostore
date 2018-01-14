@@ -1,56 +1,15 @@
- DEMO Store
+Internet DEMO store in Ruby on Rails
 
-Built with Ruby-on-Rails 5.1
+Implement an Internet store DEMO meeting the following requirements:
 
-Covered with RSpec tests
- -------------------------------------------
+    User authentication and authorization;
+    User roles (guest, registered user, admin);
+    Product categories menu;
+    Product cart available with the ability of adding any quantity of the products;
+    The cart should persist if a guest logs in as a user;
+    The cart control page with the ability to remove items or change an item quantity (and the total must auto-refresh);
+    The order creation page requiring the user authentication and the cart not empty. The billing implementation is NOT required. Consider successful ordering as a purchase;
+    The admin area with the admin full access to the store objects;
+    All the actions (except changing the page) should be performed in-place - without the current page reload;
 
- DB Relations:
-
- Category has_many Product
-
- Cart has_many LineItem
-
- Order has_many LineItem
-
- User has_one Cart
-
- User has_one Order
-
- Product has_many LineItem
-
--------------------------------------------
-
-Scaffolding:
-
-rails g scaffold Category title:string discount:integer
-
-rails g scaffold Product title:string description:text category:belongs_to price:decimal{8.2} salescount:integer
-
-rails g scaffold Cart user:belongs_to
-
-rails g scaffold Order user:belongs_to pay_type:string
-
-rails g scaffold LineItem cart:belongs_to order:belongs_to product:belongs_to quantity:integer
-
--------------------------------------------
-
-NOTE:
-
-At the time of the purchase LineItem is simply moved from Cart to Order.
-
---------------------
-
-Admin area scaffolding:
-
-rails g admin:scaffold_controller Category title:string discount:integer
-
-rails g admin:scaffold_controller Product title:string description:text category:belongs_to price:decimal{8.2} salescount:integer
-
-rails g admin:scaffold_controller Cart user:belongs_to
-
-rails g admin:scaffold_controller Order user:belongs_to pay_type:string
-
-rails g admin:scaffold_controller LineItem cart:belongs_to order:belongs_to product:belongs_to quantity:integer
-
-rails g admin:scaffold_controller User name:string address:string
+The frontend may include Bootstrap. 
