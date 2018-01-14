@@ -1,97 +1,98 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>Интернет-магазин на Ruby on Rails</title>
+    <title>Test task reference</title>
 </head>
 <body>
-    <h1 align="center">Описание выполненного тестового задания</h1>
-<h2 align="center">Интернет-магазин на Ruby on Rails</h2>
-<h4>1. Установка и запуск (локальные)</h4>
-	<p>Если Вы хотите запустить тестовое задание на своём компьютере (т.е. не на
-	Heroku
-	<a href="https://programrails-demostore.herokuapp.com/">
-	https://programrails-demostore.herokuapp.com/</a>), то перед его использованием 
-	необходимо выполнить его первичную настройку.</p>
-<p>Зайдите в папку &quot;/demostore&quot; 
-и запустите в консоли Rails команды:</p>
-<p>1. </p>
-<p>&quot;$ bundle install&quot;</p>
-<p>Это установит гемы, необходимые для работы тестового задания.</p>
-<p>2.</p>
-	<p>Запускаете в консоли Rails команду &quot;rails 
-s&quot;. Ждёте, пока запускается сервер
-Rails.</p>
-	<h4>2. Настройка</h4>
-<p>Открываете броузер и переходите в нём на адрес
-<a href="http://localhost:3000/">http://localhost:3000/</a> (если это локальная 
-установка) или <a href="https://programrails-demostore.herokuapp.com/">
-https://programrails-demostore.herokuapp.com/</a> (если это глобальная установка). 
-Там находится главная страница Интернет-магазина. </p>
-	<p>В шапке сайта слева переходите по ссылке &quot;<span lang="en-us">Reset</span>&quot;<span lang="en-us">
-	</span>и нажимаете там кнопку &quot;<span lang="en-us">Reset database</span>&quot;<span lang="en-us">.
-	</span>Это действие восстановит изначальную наполненность базы данных сайта 
-	заранее подготовленными тестовыми данными (это действие эквивалентно 
-	последовательному выполнению в консоли команд &quot;rake db:migrate:reset&quot; и &quot;rake 
-	db:seed&quot;). Поэтому Вы можете потом смело как угодно изменять и даже удалять 
-	любые сущности на сайте (товары, пользователей - что угодно) - кнопка &quot;<span lang="en-us">Reset 
-	database</span>&quot; восстановит всё назад, как было.</p>
-<h4>3. Использование</h4>
-<p>Ни список 10 самых популярных товаров, ни система скидок не реализована - некогда возиться (раньше я это делал, сейчас нет времени). На главной
-странице можно оформить покупку какого-либо товара. Для этого нужно указать его 
-количество в соответствующем месте и нажать кнопку &quot;Add to 
-Cart&quot;. В правом верхнем углу экрана появится 
-надпись &quot;Cart&quot; и число в 
-оранжевом кружочке - означающее количество (наименований) выбранного товара. Для 
-оформления заказа нужно кликнуть на эту надпись &quot;Cart&quot;. 
-Произойдёт переход на страницу корзины покупателя.</p>
-<p>На странице корзины покупателя можно изменить количество любого покупаемого 
-товара. В предусмотренном поле ввода проставьте новое число и нажмите рядом 
-кнопку &quot;Update&quot; (в реальном 
-жизненном примере такой кнопки, разумеется, не будет, а будет некий вариант 
-обработки на JavaScript). 
-При этом автоматически перерассчитается общая сумма покупки.
-Можно удалять отдельные товары из корзины - для этого достаточно нажать 
-кнопку &quot;Х&quot; справа от каждой строки с товаром. Если нужно опустошить корзину 
-полностью, нажмите на кнопку &quot;Empty cart&quot;.
-</p>
-<p>Для совершения покупки нажмите на кнопку &quot;Chekout&quot;.
-При этом вы попадёте на страницу входа пользователя - поскольку покупать 
-товары могут только зарегистрированные пользователи. Введите 
-Email &quot;client1@example.com&quot; и пароль 
-&quot;12345678&quot; (на сайте адреса электронной почты используются в качестве 
-логина пользователя). Флажок &quot;Remember me&quot;
-означает будет ли залогинившийся пользователь вспоминаться сайтом после 
-закрытия-открытия броузера.</p>
-<p>Зайдя как пользователь на сайт, нажмите снова на ссылку &quot;Cart&quot;
-в правом верхнем углу и снова нажмите на кнопку &quot;Chekout&quot;. 
-Вы перейдёте на страницу оформления заказа. Заполните поля необходимой 
-(произвольной) информацией и нажмите кнопку &quot;Create Order&quot;. 
-Вы увидите надпись &quot;Order was successfully created.&quot;, вас перенаправит на главную 
-страницу магазина и ваша корзина опустошится. На этом весь цикл покуп<span lang="ru">к</span>и товара 
-завершён.</p>
-<p>В системе предусмотрена возможность создания пользователей с полномочиями 
-администратора. Администратор имеет доступ в админку - где можно управлять наполнением сайта. Обычный пользователь не может, например, добавить категорию или товар - это может сделать только админ и только в админке.</p>
-<p>Админ может также удалять пользователей.</p>
-<p>Тестовое задание содержит готового пользователя с админскими 
-полномочиями: Email: &quot;admin@example.com&quot;, Password: 
-&quot;12345678&quot; (пароли у всех предустановленных пользователей одинаковы). 
-<p>Состояние корзины запоминается для текущего пользователя и 
-восстанавливается при его повторном появлении на сайте.</p>
-<p>Все формы, где предусмотрен ввод пользовательских данных, имеют защиту от 
-ввода пустых полей и от ввода заведомо неверных данных.</p>
-<h4>4. Технические подробности</h4>
-<p> Все локальные действия на страницах сайта выполняются без перезагрузки страницы (Ajax 
-+ JQuery). Подсистема пользователей реализована 
-на геме Devise. Роли - на геме Rolify. Блокировка пользователей пока не реализована - некогда возиться (раньше я это делал, сейчас нет времени). Интерфейс сайта сделан на 
-Bootstrap 4 beta. Блоки товаров на главной странице сайта - 
-плавающие и адаптивные, т.е. они поддерживают изменение размеров экрана (без 
-разрушения и перекосов вёрстки CSS)
-- т.н. &quot;отзывчивый дизайн&quot;. Отзывчивый дизайн 
-есть только на главной странице сайта и сделан он в самой упрощённой форме 
-(только для демонстрации идеи &quot;отзывчивости&quot; в рамках тестового задания).</p>
 
-<p>Исходный код на сайте покрыт тестами RSpec - модели, контроллеры, фабрики, системные тесты.
-</p>
+<h1 align="center">Test task reference</h1>
+
+<h2 align="center">Internet DEMO store in Ruby on Rails</h2>
+
+<h4>1. Usage</h4>
+
+<ul>
+	<li>Head to the "All products" page</li>
+	<li>Choose a product you want to buy. Enter the quantity (of the desired product) into the corresponding field and press "Add to cart" button</li>
+	<li>In the upper right corner you see an orange little circle next to the "Cart" title. Press on it to get to the Cart control page</li>
+	<li>Check out the correctness of your cart content. Adjust it if necessary - change the items quantities or even remove the unwanted items</li>
+	<li>Press the "Checkout" button to proceed to the order creation page</li>
+	<li>If you are not signed in you will be redirected to the sign in page</li>
+	<li>Sign in with the user credentials: login "client1@example.com", password "12345678". Set the "Remember me" checkbox if you want.</li>
+	<li>Return to the cart control page (upper right corner) and press the "Checkout" button. (keeping the same page before and after log in is not implemented for the sake of the code simplicity)</li>
+	<li>On the order control page choose a predefined payment method and press "Create Order"</li>
+	<li>That's it. You may return to the main page or leave the site</li>
+</ul>
+
+<h4>2. Notes</h4>
+
+<p>If you want to try out the admin area sign out as "client1@example.com" and sign in with the admin credentials:</p>
+
+<p>Login: admin@example.com</p>
+
+<p>Password: 12345678</p>
+
+<h4>3. Technical details</h4>
+
+<ul>
+	<li>This site is written in Ruby on Rails 5.1</li>
+	<li>The whole code is covered with RSpec (and ROR 5.1 System) tests</li>
+	<li>The user authentication and authorization: the Devise gem</li>
+	<li>The user roles: the Rolify gem</li>
+	<li>Design: the Bootstrap 4 beta gem</li>
+	<li>The product boxes on the main page have responsive design</li>
+	<li>The admin area is built using the "rails-admin-scaffold" gem</li>
+	<li>The product pictures upload: the CarrierWave gem (auto-disabled if the site is on Heroku - with default images)</li>
+</ul>
+
+<p>The site sourcecodes are available on GitHub. See the link on the top bar.</p>
+
+<p>You may freely alter the content of the site because you can restitute the initial site content proceeding with the "Reset" link on the top bar.</p>
+
+<h4>4. Database relations</h4>
+
+<p>Category has_many Product</p>
+
+<p>Cart has_many LineItem</p>
+
+<p>Order has_many LineItem</p>
+
+<p>User has_one Cart</p>
+
+<p>User has_one Order</p>
+
+<p>Product has_many LineItem</p>
+
+<h5>Scaffolding:</h5>
+
+<p>rails g scaffold Category title:string discount:integer</p>
+
+<p>rails g scaffold Product title:string description:text category:belongs_to price:decimal{8.2} salescount:integer</p>
+
+<p>rails g scaffold Cart user:belongs_to</p>
+
+<p>rails g scaffold Order user:belongs_to pay_type:string</p>
+
+<p>rails g scaffold LineItem cart:belongs_to order:belongs_to product:belongs_to quantity:integer</p>
+
+
+<h5>NOTE:</h5>
+
+<p>At the time of the purchase LineItem is simply moved from Cart to Order.</p>
+
+<h5>Admin area scaffolding:</h5>
+
+<p>rails g admin:scaffold_controller Category title:string discount:integer</p>
+
+<p>rails g admin:scaffold_controller Product title:string description:text category:belongs_to price:decimal{8.2} salescount:integer</p>
+
+<p>rails g admin:scaffold_controller Cart user:belongs_to</p>
+
+<p>rails g admin:scaffold_controller Order user:belongs_to pay_type:string</p>
+
+<p>rails g admin:scaffold_controller LineItem cart:belongs_to order:belongs_to product:belongs_to quantity:integer</p>
+
+<p>rails g admin:scaffold_controller User name:string address:string</p>
 
 </body>
 </html>
