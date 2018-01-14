@@ -71,3 +71,7 @@ gem 'russian'
 # gem 'rmagick' # http://stackoverflow.com/questions/16774501/rmagick-gem-installation-issue
 
 gem 'poltergeist'
+
+group :production do
+  gem 'pg'
+end
