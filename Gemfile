@@ -10,7 +10,8 @@ end
 gem 'rails', '~> 5.1.4'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
-gem 'pg'
+# https://stackoverflow.com/questions/39261996/heroku-and-rails-gem-load-error-with-postgres-however-it-is-specified-in-gemfi
+gem 'pg', '~> 0.20'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -71,7 +72,3 @@ gem 'russian'
 # gem 'rmagick' # http://stackoverflow.com/questions/16774501/rmagick-gem-installation-issue
 
 gem 'poltergeist'
-
-group :production do
-  gem 'pg'
-end

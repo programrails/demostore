@@ -254,7 +254,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   launchy
-  pg
+  pg (~> 0.20)
   poltergeist
   puma (~> 3.7)
   rails (~> 5.1.4)
